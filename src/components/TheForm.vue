@@ -58,6 +58,10 @@
       <input v-model="confirm" type="checkbox" name="confirm" id="confirm" />
       <label for="confirm">Confirm ?</label>
     </div>
+    <div class="form-control">
+      <!-- привязка v-model к кастомному компоненту -->
+      <RatingControl v-model="rating" />
+    </div>
     <div>
       <button>Save Data</button>
     </div>
@@ -65,6 +69,8 @@
 </template>
 
 <script>
+import RatingControl from './RatingControl.vue';
+
 const init = {
   userName: '',
   userAge: null,
@@ -72,9 +78,11 @@ const init = {
   interest: [],
   how: null,
   confirm: false,
+  rating: null,
 };
 
 export default {
+  components: { RatingControl },
   data() {
     return {
       userName: init.userName,
@@ -83,6 +91,7 @@ export default {
       interest: init.interest,
       how: init.how,
       confirm: init.confirm,
+      rating: init.rating,
     };
   },
   methods: {
@@ -93,6 +102,7 @@ export default {
       this.interest = init.interest;
       this.how = init.how;
       this.confirm = init.confirm;
+      this.rating = init.rating;
     },
     submit() {
       const data = {
@@ -102,6 +112,7 @@ export default {
         interest: this.interest,
         how: this.how,
         confirm: this.confirm,
+        rating: this.rating,
       };
       console.log(data);
       this.clear();

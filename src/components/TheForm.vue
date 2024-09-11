@@ -2,7 +2,15 @@
   <form @submit.prevent="submit">
     <div class="form-control">
       <label for="user-name">Your Name</label>
-      <input v-model.trim.lazy="userName" id="user-name" name="user-name" type="text" />
+      <input
+        @focus="setupUsername"
+        @blur="assertUsername"
+        v-model.trim.lazy="userName"
+        id="user-name"
+        name="user-name"
+        type="text"
+        ref="userNameRef"
+      />
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
@@ -98,6 +106,16 @@ export default {
       console.log(data);
       this.clear();
     },
+    setupUsername() {
+      const element = this.$refs.userNameRef;
+      element.classList.remove('input--invalid');
+    },
+    assertUsername() {
+      const element = this.$refs.userNameRef;
+      if (this.userName.length < 5) {
+        element.classList.add('input--invalid');
+      }
+    },
   },
 };
 </script>
@@ -163,5 +181,10 @@ button:hover,
 button:active {
   border-color: #002350;
   background-color: #002350;
+}
+
+.input--invalid {
+  color: red;
+  outline: 0.5rem solid red;
 }
 </style>

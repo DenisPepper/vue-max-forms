@@ -8,7 +8,7 @@
         <span>{{ car.price }}</span>
       </li>
     </ul>
-    <button @click="download">download</button>
+    <button @click="download">refresh 🔄️</button>
   </section>
 </template>
 
@@ -35,6 +35,9 @@ export default {
         alert('Ошибка HTTP: ' + response.status);
       }
     },
+  },
+  mounted() {
+    this.download();
   },
 };
 </script>

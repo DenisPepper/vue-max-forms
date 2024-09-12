@@ -40,7 +40,6 @@ export default {
       this.save(data);
     },
     async save(data) {
-      console.log(URL);
       const response = await fetch(URL, {
         method: 'POST',
         headers: {
@@ -52,8 +51,8 @@ export default {
       if (response.ok) {
         // если HTTP-статус в диапазоне 200-299
         // получаем тело ответа (см. про этот метод ниже)
-        const d = await response.json();
-        console.log(d);
+        const id = await response.json();
+        console.log(id);
       } else {
         alert('Ошибка HTTP: ' + response.status);
       }

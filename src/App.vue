@@ -1,15 +1,15 @@
 <template>
-  <the-form></the-form>
+  <CarForm />
 </template>
 
 <script>
-import TheForm from './components/TheForm.vue';
+import CarForm from './components/TheCarForm.vue';
 
 export default {
   components: {
-    TheForm
-  }  
-}
+    CarForm,
+  },
+};
 </script>
 
 <style>

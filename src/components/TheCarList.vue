@@ -56,6 +56,13 @@ section {
   position: relative;
 }
 
+div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 ul {
   display: flex;
   flex-direction: column;
@@ -68,11 +75,12 @@ ul {
 li {
   display: flex;
   gap: 2rem;
+  justify-content: space-between;
 }
 
 button {
   position: absolute;
-  top: 1rem;
+  top: -1rem;
   right: 1rem;
   max-width: 6rem;
   background-color: chocolate;

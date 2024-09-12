@@ -1,5 +1,6 @@
 <template>
   <section>
+    <div v-if="isLoading">Loading ...</div>
     <ul>
       <li v-for="car of cars" :key="car.id">
         <span>{{ car.id }}</span>
@@ -19,21 +20,25 @@ export default {
   data() {
     return {
       cars: [],
+      isLoading: false,
     };
   },
   methods: {
     async download() {
+      this.isLoading = true;
+      const cars = [];
       const response = await fetch(URL);
       if (response.ok) {
         const data = await response.json();
-        const cars = [];
         for (const key of Object.keys(data)) {
           cars.push({ ...data[key], id: key });
         }
-        this.cars = cars;
       } else {
         alert('Ошибка HTTP: ' + response.status);
       }
+
+      this.isLoading = false;
+      this.cars = cars;
     },
   },
   mounted() {

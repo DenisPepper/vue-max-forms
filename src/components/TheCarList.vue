@@ -1,0 +1,72 @@
+<template>
+  <section>
+    <ul>
+      <li v-for="car of cars" :key="car.id">
+        <span>{{ car.id }}</span>
+        <span>{{ car.model }}</span>
+        <span>{{ car.color }}</span>
+        <span>{{ car.price }}</span>
+      </li>
+    </ul>
+    <button @click="download">download</button>
+  </section>
+</template>
+
+<script>
+import URL from '/local/url.js';
+
+export default {
+  data() {
+    return {
+      cars: [],
+    };
+  },
+  methods: {
+    async download() {
+      const response = await fetch(URL);
+      if (response.ok) {
+        const data = await response.json();
+        const cars = [];
+        for (const key of Object.keys(data)) {
+          cars.push({ ...data[key], id: key });
+        }
+        this.cars = cars;
+      } else {
+        alert('Ошибка HTTP: ' + response.status);
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+section {
+  width: 80%;
+  height: 50dvh;
+  margin: 0 auto;
+  background-color: cadetblue;
+  position: relative;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 6rem;
+  list-style: none;
+  margin: 0;
+}
+
+li {
+  display: flex;
+  gap: 2rem;
+}
+
+button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  max-width: 6rem;
+  background-color: chocolate;
+}
+</style>

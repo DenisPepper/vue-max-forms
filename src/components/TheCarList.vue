@@ -3,7 +3,11 @@
     <div v-if="isLoading">Loading ...</div>
     <ul>
       <li v-for="car of cars" :key="car.id">
-        <span>{{ car.id }}</span>
+        <span>
+          <router-link :to="`/cars/${car.id}?model=${car.model}&color=${car.color}&price=${car.price}`">
+            {{ car.id }}
+          </router-link>
+        </span>
         <span>{{ car.model }}</span>
         <span>{{ car.color }}</span>
         <span>{{ car.price }}</span>

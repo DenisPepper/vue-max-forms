@@ -9,7 +9,8 @@
         <span>{{ car.price }}</span>
       </li>
     </ul>
-    <button @click="download">refresh 🔄️</button>
+    <button @click="download" class="btn--refresh">refresh 🔄️</button>
+    <button @click="navigate('/add-car')" class="btn--add">add new ➕</button>
   </section>
 </template>
 
@@ -24,6 +25,9 @@ export default {
     };
   },
   methods: {
+    navigate(path) {
+      this.$router.push(path);
+    },
     async download() {
       this.isLoading = true;
       const cars = [];
@@ -86,5 +90,9 @@ button {
   right: 0;
   max-width: 6rem;
   background-color: chocolate;
+}
+
+.btn--add {
+  top: 2rem;
 }
 </style>

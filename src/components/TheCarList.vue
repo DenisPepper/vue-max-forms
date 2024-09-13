@@ -61,6 +61,8 @@ div {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem;
 }
 
 ul {
@@ -80,8 +82,8 @@ li {
 
 button {
   position: absolute;
-  top: -1rem;
-  right: 1rem;
+  top: 0;
+  right: 0;
   max-width: 6rem;
   background-color: chocolate;
 }

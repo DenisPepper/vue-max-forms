@@ -1,6 +1,15 @@
 <template>
+  <Navigation />
   <router-view> </router-view>
 </template>
+
+<script>
+import Navigation from './components/AppNavigation.vue';
+
+export default {
+  components: { Navigation },
+};
+</script>
 
 <style>
 * {

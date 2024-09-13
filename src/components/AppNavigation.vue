@@ -27,8 +27,7 @@ li a:visited {
   color: white;
 }
 
-li a:link.router-link-active,
-li a:visited.router-link-active {
+li *:any-link.router-link-active {
   color: white;
   background-color: orangered;
 }

@@ -8,11 +8,18 @@ import Car from './components/TheCar.vue';
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
-    /* { path: '/', redirect: '/cars' }, */
-    { path: '/cars', component: List, alias: '/' },
-    { path: '/cars/:carId', component: Car, props: true }, // props: true - carId будет передаваться в компонент Car в массив props
-    { path: '/cars/new', component: Form },
+    { path: '/', redirect: '/cars' },
+    {
+      path: '/cars',
+      component: List,
+      children: [
+        { path: ':carId', component: Car, props: true }, // props: true - carId будет передаваться в компонент Car в массив props
+        { path: 'new', component: Form },
+      ],
+    },
     { path: '/add-car', component: Form },
+    // undefined routes
+    { path: '/:notFound(.*)', /*component: NotFoundPage */ redirect: '/cars' },
   ],
 });
 

@@ -1,4 +1,5 @@
 <template>
+  <router-view> </router-view>
   <section>
     <div v-if="isLoading">Loading ...</div>
     <ul>

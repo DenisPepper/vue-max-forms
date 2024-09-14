@@ -8,7 +8,8 @@ import Car from './components/TheCar.vue';
 const router = createRouter({
   history: createWebHashHistory(),
   routes: [
-    { path: '/', component: List },
+    { path: '/', redirect: '/cars' },
+    { path: '/cars', component: List },
     { path: '/cars/:carId', component: Car, props: true }, // props: true - carId будет передаваться в компонент Car в массив props
     { path: '/cars/new', component: Form },
     { path: '/add-car', component: Form },

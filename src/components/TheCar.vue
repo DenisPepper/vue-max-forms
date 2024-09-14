@@ -1,6 +1,7 @@
 <template>
   <article>
     <h2>Car Info</h2>
+    <button @click="console.log(carId)">show carId prop</button>
     <dl>
       <dt>ID:</dt>
       <dd>{{ id }}</dd>
@@ -16,6 +17,7 @@
 
 <script>
 export default {
+  props: ['carId'],
   data() {
     return {
       id: '',
@@ -25,7 +27,7 @@ export default {
     };
   },
   created() {
-    this.id = this.$route.params.id;
+    this.id = this.$route.params.carId;
     this.model = this.$route.query.model;
     this.color = this.$route.query.color;
     this.price = this.$route.query.price;
